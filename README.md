@@ -1,3 +1,5 @@
-# fsa
+# Nick Morgan - Final Profect
 
-Finite State Automata - Nick Morgan
+Finite State Automata:
+  * DFA Simulator
+  * NFA Simulator
