@@ -1,1 +1,3 @@
-# cmsi-385-final
+# fsa
+
+Finite State Automata - Nick Morgan
