@@ -147,7 +147,7 @@
         "affectsGlobalScope": false
       },
       "../src/nondeterministicfinitestatemachine.ts": {
-        "version": "0b973b38f27b5c061335a049e1984d4ffc32f3f00bbd2aa7305c7ef64a4146bd",
+        "version": "ae4f98a08568be03647eb106b77ff59046f573fd74ee9d4da20955c602d96fe9",
         "signature": "3c6f1a7c500d3f2d2d3853e94ff5e3610bfce24c0802f0c353033b16ea05f995",
         "affectsGlobalScope": false
       },
@@ -172,7 +172,7 @@
         "affectsGlobalScope": false
       },
       "../src/tests.spec.ts": {
-        "version": "31465e70fbc53b4cdce446db1e75387e580aef839550c8e68acdea86879d1514",
+        "version": "73d61e9aa61e898d30f096a6fe9de9a9a89ca4cb7538141ccba9e84e9cdd58db",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
