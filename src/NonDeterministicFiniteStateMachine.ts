@@ -47,7 +47,7 @@ export default class NonDeterministicFiniteStateMachine {
       description: { acceptStates },
     } = this;
     const possibleStates = [...states, ...this.transitions(states, 'lambda')];
-    const nextStates = this.transitions(states, s.charAt(0));
+    const nextStates = this.transitions(possibleStates, s.charAt(0));
     if (s.length !== 0) {
       return this.accepts(s.substr(1), nextStates);
     } else {

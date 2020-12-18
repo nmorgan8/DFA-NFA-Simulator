@@ -50,6 +50,33 @@ const NFAmachinesTests: {
       acceptStates: ['B'],
     },
   },
+  '0100^*1': {
+    accepted: ['0101', '01000001', '01000000001'],
+    rejected: ['', '1', '0', '011', '0100000', '01000111'],
+    description: {
+      transitions: {
+        S: {
+          0: ['A'],
+        },
+        A: {
+          1: ['B'],
+        },
+        B: {
+          0: ['C'],
+        },
+        C: {
+          lambda: ['D'],
+        },
+        D: {
+          0: ['D'],
+          1: ['E'],
+        },
+        E: {},
+      },
+      start: 'S',
+      acceptStates: ['E'],
+    },
+  },
 };
 
 const DFAmachinesTests: {
