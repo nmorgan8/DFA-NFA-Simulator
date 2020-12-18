@@ -136,29 +136,19 @@
         "signature": "89bf2b7a601b73ea4311eda9c41f86a58994fec1bee3b87c4a14d68d9adcdcbd",
         "affectsGlobalScope": true
       },
-      "../src/deterministicfinitestatemachine.spec.ts": {
-        "version": "f330924d249c6860a9dcc47f53ae9e7b8eeff4895e1799c112c02efb83bcfe4e",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-        "affectsGlobalScope": false
-      },
       "../src/deterministicfinitestatemachine.ts": {
         "version": "1d1cd2ddac3018e68d6da2d212edc256dd5d50fdb3ad633e60424d259e3a271b",
         "signature": "9e95305b038d4bc6178f6e9a8474b402bde10fe547bcc4fa59e1d1ae523d7a00",
         "affectsGlobalScope": false
       },
-      "../node_modules/ava/index.d.ts": {
-        "version": "0ceec7923fb2a6e540f73682c7acffe9124c9c3517a02eac27632844b8a61251",
-        "signature": "0ceec7923fb2a6e540f73682c7acffe9124c9c3517a02eac27632844b8a61251",
+      "../src/nfatodfaconverter.ts": {
+        "version": "c4a00a4c462451d66a0ab683fdfda385b2d31c7f1e374ec22b1c750610bd7e56",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
         "affectsGlobalScope": false
       },
       "../src/nondeterministicfinitestatemachine.ts": {
-        "version": "35639cf584a24416bd4b62c78ed9b21f370643c92cd5b9b2e3ed89038408bd2d",
+        "version": "0b973b38f27b5c061335a049e1984d4ffc32f3f00bbd2aa7305c7ef64a4146bd",
         "signature": "3c6f1a7c500d3f2d2d3853e94ff5e3610bfce24c0802f0c353033b16ea05f995",
-        "affectsGlobalScope": false
-      },
-      "../src/nondeterministicfinitestatemachine.spec.ts": {
-        "version": "72ab796ed0387b9d8577e63ae47ee63d7619a582f7491190a338806e0ed0febf",
-        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
       "../src/lib/async.ts": {
@@ -174,6 +164,16 @@
       "../src/index.ts": {
         "version": "9e45b48d7724a1de8d2a1f43eca0db4475901773f52a294e1e8f3f1cf506f842",
         "signature": "9e45b48d7724a1de8d2a1f43eca0db4475901773f52a294e1e8f3f1cf506f842",
+        "affectsGlobalScope": false
+      },
+      "../node_modules/ava/index.d.ts": {
+        "version": "0ceec7923fb2a6e540f73682c7acffe9124c9c3517a02eac27632844b8a61251",
+        "signature": "0ceec7923fb2a6e540f73682c7acffe9124c9c3517a02eac27632844b8a61251",
+        "affectsGlobalScope": false
+      },
+      "../src/tests.spec.ts": {
+        "version": "31465e70fbc53b4cdce446db1e75387e580aef839550c8e68acdea86879d1514",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
       "../src/lib/async.spec.ts": {
@@ -639,8 +639,9 @@
         "../node_modules/ava/index.d.ts",
         "../src/lib/number.ts"
       ],
-      "../src/nondeterministicfinitestatemachine.spec.ts": [
+      "../src/tests.spec.ts": [
         "../node_modules/ava/index.d.ts",
+        "../src/deterministicfinitestatemachine.ts",
         "../src/nondeterministicfinitestatemachine.ts"
       ]
     },
@@ -893,15 +894,15 @@
       "../node_modules/typescript/lib/lib.es2020.bigint.d.ts",
       "../node_modules/typescript/lib/lib.es5.d.ts",
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
-      "../src/deterministicfinitestatemachine.spec.ts",
       "../src/deterministicfinitestatemachine.ts",
       "../src/index.ts",
       "../src/lib/async.spec.ts",
       "../src/lib/async.ts",
       "../src/lib/number.spec.ts",
       "../src/lib/number.ts",
-      "../src/nondeterministicfinitestatemachine.spec.ts",
+      "../src/nfatodfaconverter.ts",
       "../src/nondeterministicfinitestatemachine.ts",
+      "../src/tests.spec.ts",
       "../src/types/example.d.ts"
     ]
   },
