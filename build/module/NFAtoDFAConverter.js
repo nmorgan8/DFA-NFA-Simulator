@@ -1,10 +1,30 @@
-// import NonDeterministicFiniteStateMachine, {
-//   NFADescription,
-// } from './NonDeterministicFiniteStateMachine';
-// import { DeterministicFiniteStateMachine } from './DeterministicFiniteStateMachine';
-// export function NFAtoDFAConverter(
-//   nfa: NonDeterministicFiniteStateMachine
-// ): DeterministicFiniteStateMachine {
-//   return;
-// }
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTkZBdG9ERkFDb252ZXJ0ZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvTkZBdG9ERkFDb252ZXJ0ZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsK0NBQStDO0FBQy9DLG9CQUFvQjtBQUNwQixpREFBaUQ7QUFDakQsdUZBQXVGO0FBRXZGLHFDQUFxQztBQUNyQyw0Q0FBNEM7QUFDNUMsdUNBQXVDO0FBQ3ZDLFlBQVk7QUFDWixJQUFJIn0=
+// type State = string;
+// type InputSymbol = string;
+import DeterministicFiniteStateMachine from './DeterministicFiniteStateMachine';
+export function NFAtoDFAConverter(nfa) {
+    const nfaDesc = nfa.getDesc();
+    for (const stateTrans of Object.values(nfaDesc.transitions)) {
+        for (const state of Object.keys(stateTrans)) {
+            console.log(`state: ${state}\ttransitions: ${stateTrans}`);
+            if (!Object.keys(stateTrans).includes('0')) {
+                console.log(nfaDesc.transitions[state]);
+                nfaDesc.transitions[state][0] = [];
+            }
+            if (!Object.keys(stateTrans).includes('1')) {
+                console.log(nfaDesc.transitions[state]);
+                nfaDesc.transitions[state][1] = [];
+            }
+        }
+    }
+    const dfa = {
+        transitions: {},
+        start: null,
+        acceptStates: [],
+    };
+    console.log(nfaDesc);
+    const dead = 'dead';
+    nfaDesc.transitions[dead] = { 0: [dead], 1: [dead] };
+    const result = new DeterministicFiniteStateMachine(dfa);
+    return result;
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTkZBdG9ERkFDb252ZXJ0ZXIuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvTkZBdG9ERkFDb252ZXJ0ZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsdUJBQXVCO0FBQ3ZCLDZCQUE2QjtBQUU3QixPQUFPLCtCQUErQixNQUFNLG1DQUFtQyxDQUFDO0FBR2hGLE1BQU0sVUFBVSxpQkFBaUIsQ0FDL0IsR0FBdUM7SUFFdkMsTUFBTSxPQUFPLEdBQUcsR0FBRyxDQUFDLE9BQU8sRUFBRSxDQUFDO0lBQzlCLEtBQUssTUFBTSxVQUFVLElBQUksTUFBTSxDQUFDLE1BQU0sQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLEVBQUU7UUFDM0QsS0FBSyxNQUFNLEtBQUssSUFBSSxNQUFNLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxFQUFFO1lBQzNDLE9BQU8sQ0FBQyxHQUFHLENBQUMsVUFBVSxLQUFLLGtCQUFrQixVQUFVLEVBQUUsQ0FBQyxDQUFDO1lBQzNELElBQUksQ0FBQyxNQUFNLENBQUMsSUFBSSxDQUFDLFVBQVUsQ0FBQyxDQUFDLFFBQVEsQ0FBQyxHQUFHLENBQUMsRUFBRTtnQkFDMUMsT0FBTyxDQUFDLEdBQUcsQ0FBQyxPQUFPLENBQUMsV0FBVyxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUM7Z0JBQ3hDLE9BQU8sQ0FBQyxXQUFXLENBQUMsS0FBSyxDQUFDLENBQUMsQ0FBQyxDQUFDLEdBQUcsRUFBRSxDQUFDO2FBQ3BDO1lBQ0QsSUFBSSxDQUFDLE1BQU0sQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFDLENBQUMsUUFBUSxDQUFDLEdBQUcsQ0FBQyxFQUFFO2dCQUMxQyxPQUFPLENBQUMsR0FBRyxDQUFDLE9BQU8sQ0FBQyxXQUFXLENBQUMsS0FBSyxDQUFDLENBQUMsQ0FBQztnQkFDeEMsT0FBTyxDQUFDLFdBQVcsQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUMsR0FBRyxFQUFFLENBQUM7YUFDcEM7U0FDRjtLQUNGO0lBRUQsTUFBTSxHQUFHLEdBQUc7UUFDVixXQUFXLEVBQUUsRUFBRTtRQUNmLEtBQUssRUFBRSxJQUFJO1FBQ1gsWUFBWSxFQUFFLEVBQUU7S0FDakIsQ0FBQztJQUNGLE9BQU8sQ0FBQyxHQUFHLENBQUMsT0FBTyxDQUFDLENBQUM7SUFFckIsTUFBTSxJQUFJLEdBQUcsTUFBTSxDQUFDO0lBQ3BCLE9BQU8sQ0FBQyxXQUFXLENBQUMsSUFBSSxDQUFDLEdBQUcsRUFBRSxDQUFDLEVBQUUsQ0FBQyxJQUFJLENBQUMsRUFBRSxDQUFDLEVBQUUsQ0FBQyxJQUFJLENBQUMsRUFBRSxDQUFDO0lBQ3JELE1BQU0sTUFBTSxHQUFHLElBQUksK0JBQStCLENBQUMsR0FBRyxDQUFDLENBQUM7SUFFeEQsT0FBTyxNQUFNLENBQUM7QUFDaEIsQ0FBQyJ9

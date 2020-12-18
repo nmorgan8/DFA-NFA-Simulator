@@ -3,10 +3,10 @@ import test from 'ava';
 import DeterministicFiniteStateMachine, {
   DFADescription,
 } from './DeterministicFiniteStateMachine';
+// import { NFAtoDFAConverter } from './NFAtoDFAConverter';
 import NonDeterministicFiniteStateMachine, {
   NFADescription,
 } from './NonDeterministicFiniteStateMachine';
-// import { NFAtoDFAConverter } from './NFAtoDFAConverter';
 
 const NFAmachinesTests: {
   [name: string]: {
@@ -65,7 +65,7 @@ const NFAmachinesTests: {
           0: ['C'],
         },
         C: {
-          lambda: ['D'],
+          l: ['D'],
         },
         D: {
           0: ['D'],
@@ -75,6 +75,41 @@ const NFAmachinesTests: {
       },
       start: 'S',
       acceptStates: ['E'],
+    },
+  },
+  contain1110: {
+    accepted: [
+      '1110',
+      '11110',
+      '01110',
+      '111101',
+      '111100',
+      '011101',
+      '011100',
+    ],
+    rejected: ['', '1', '0', '1010', '011001', '000110010'],
+    description: {
+      transitions: {
+        S: {
+          0: ['S'],
+          1: ['S', 'A'],
+        },
+        A: {
+          1: ['B'],
+        },
+        B: {
+          1: ['C'],
+        },
+        C: {
+          0: ['D'],
+        },
+        D: {
+          0: ['D'],
+          1: ['D'],
+        },
+      },
+      start: 'S',
+      acceptStates: ['D'],
     },
   },
 };
@@ -130,6 +165,62 @@ const DFAmachinesTests: {
       acceptStates: ['r0'],
     },
   },
+  starts01: {
+    accepted: ['010', '0101', '0100', '0100001'],
+    rejected: ['', '1', '0', '10', '0011', '101', '1010101'],
+    description: {
+      transitions: {
+        S: {
+          0: 'A',
+          1: 'C',
+        },
+        A: {
+          0: 'C',
+          1: 'B',
+        },
+        B: {
+          0: 'B',
+          1: 'B',
+        },
+        C: {
+          0: 'C',
+          1: 'C',
+        },
+      },
+      start: 'S',
+      acceptStates: ['B'],
+    },
+  },
+  starts00or11: {
+    accepted: ['00', '11', '000', '111', '001', '110'],
+    rejected: ['', '1', '0', '10', '01', '10101010'],
+    description: {
+      transitions: {
+        S: {
+          0: 'A',
+          1: 'B',
+        },
+        A: {
+          0: 'C',
+          1: 'D',
+        },
+        B: {
+          0: 'D',
+          1: 'C',
+        },
+        C: {
+          0: 'C',
+          1: 'C',
+        },
+        D: {
+          0: 'D',
+          1: 'D',
+        },
+      },
+      start: 'S',
+      acceptStates: ['C'],
+    },
+  },
 };
 
 // NFA Tests:
@@ -142,27 +233,27 @@ for (const [name, testDesc] of Object.entries(NFAmachinesTests)) {
   test(`${name}/accepts`, (t) => {
     const nfa = new NonDeterministicFiniteStateMachine(testDesc.description);
     const { accepted, rejected } = testDesc;
-    // console.log(`
-    // accepted: ${accepted}
-    // rejected: ${rejected}
-    // `);
 
     for (const s of accepted) {
-      // console.log(dfa.accepts(s));
-      // console.log('accept');
-      // console.log(s);
-      // console.log(nfa.accepts(s));
       t.assert(nfa.accepts(s));
     }
 
     for (const s of rejected) {
-      // console.log(!dfa.accepts(s));
-      // console.log('reject');
-      // console.log(s);
-      // console.log(!nfa.accepts(s));
       t.assert(!nfa.accepts(s));
     }
   });
+
+  // NFA to DFA Tests:
+  // test(`${name}/conversion`, (t) => {
+  //   const nfa = new NonDeterministicFiniteStateMachine(testDesc.description);
+  //   // const { accepted, rejected } = testDesc;
+  //   // console.log(`
+  //   // accepted: ${accepted}
+  //   // rejected: ${rejected}
+  //   // `);
+  //   const dfa = NFAtoDFAConverter(nfa);
+  //   t.assert(dfa);
+  // });
 }
 
 //DFA Tests:
@@ -186,42 +277,13 @@ for (const [name, testDesc] of Object.entries(DFAmachinesTests)) {
   test(`${name}/accepts`, (t) => {
     const dfa = new DeterministicFiniteStateMachine(testDesc.description);
     const { accepted, rejected } = testDesc;
-    // console.log(`
-    // accepted: ${accepted}
-    // rejected: ${rejected}
-    // `);
 
     for (const s of accepted) {
-      // console.log(dfa.accepts(s));
       t.assert(dfa.accepts(s));
-      // t.assert(true);
     }
 
     for (const s of rejected) {
-      // console.log(!dfa.accepts(s));
       t.assert(!dfa.accepts(s));
-      // t.assert(true);
     }
   });
 }
-
-// NFA to DFA Tests:
-// for (const [name, testDesc] of Object.entries(NFAmachinesTests)) {
-//   test(`${name}/constructor`, (t) => {
-//     const nfa = new NonDeterministicFiniteStateMachine(testDesc.description);
-//     t.truthy(nfa);
-//     console.log(nfa);
-//   });
-
-//   test(`${name}/conversion`, (t) => {
-//     const nfa = new NonDeterministicFiniteStateMachine(testDesc.description);
-//     // const { accepted, rejected } = testDesc;
-//     // console.log(`
-//     // accepted: ${accepted}
-//     // rejected: ${rejected}
-//     // `);
-//     const dfa = NFAtoDFAConverter(nfa);
-//     console.log(dfa);
-//     t.assert(true);
-//   });
-// }

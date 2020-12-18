@@ -4,7 +4,7 @@ type InputSymbol = string;
 export interface NFADescription {
   transitions: {
     [key: string]: {
-      lambda?: State[];
+      l?: State[];
       0?: State[];
       1?: State[];
     };
@@ -18,6 +18,10 @@ export default class NonDeterministicFiniteStateMachine {
 
   constructor(description: NFADescription) {
     this.description = description;
+  }
+
+  getDesc(): NFADescription {
+    return this.description;
   }
 
   stateTransitions(state: State, symbol: InputSymbol): State[] {
@@ -46,7 +50,7 @@ export default class NonDeterministicFiniteStateMachine {
     const {
       description: { acceptStates },
     } = this;
-    const possibleStates = [...states, ...this.transitions(states, 'lambda')];
+    const possibleStates = [...states, ...this.transitions(states, 'l')];
     const nextStates = this.transitions(possibleStates, s.charAt(0));
     if (s.length !== 0) {
       return this.accepts(s.substr(1), nextStates);

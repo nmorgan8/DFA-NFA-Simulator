@@ -141,14 +141,14 @@
         "signature": "9e95305b038d4bc6178f6e9a8474b402bde10fe547bcc4fa59e1d1ae523d7a00",
         "affectsGlobalScope": false
       },
-      "../src/nfatodfaconverter.ts": {
-        "version": "c4a00a4c462451d66a0ab683fdfda385b2d31c7f1e374ec22b1c750610bd7e56",
-        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "../src/nondeterministicfinitestatemachine.ts": {
+        "version": "2711a2a247588eba5cacd697ec5acd889035b85feb5e4d43e7c7a147a07441f2",
+        "signature": "3dcbdb6cb66dbf0c88cc40e8be4bc78dd08f37f7f521591d81ecd67376189bc7",
         "affectsGlobalScope": false
       },
-      "../src/nondeterministicfinitestatemachine.ts": {
-        "version": "ae4f98a08568be03647eb106b77ff59046f573fd74ee9d4da20955c602d96fe9",
-        "signature": "3c6f1a7c500d3f2d2d3853e94ff5e3610bfce24c0802f0c353033b16ea05f995",
+      "../src/nfatodfaconverter.ts": {
+        "version": "185b247d08a7d9cbaa0c0bb1cd4d190c8f7fda6da71e0c6c055e79077c6c6e6f",
+        "signature": "c9bd626846bb63258a07060dc38b02ecdb06eaec2ac1406bf608ac6c2723b9d1",
         "affectsGlobalScope": false
       },
       "../src/lib/async.ts": {
@@ -172,7 +172,7 @@
         "affectsGlobalScope": false
       },
       "../src/tests.spec.ts": {
-        "version": "73d61e9aa61e898d30f096a6fe9de9a9a89ca4cb7538141ccba9e84e9cdd58db",
+        "version": "ddab8abecf7ab53e2b88d0b1963c8a47cbc111d046a6e4552984dcff4ef1b420",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -639,6 +639,10 @@
         "../node_modules/ava/index.d.ts",
         "../src/lib/number.ts"
       ],
+      "../src/nfatodfaconverter.ts": [
+        "../src/deterministicfinitestatemachine.ts",
+        "../src/nondeterministicfinitestatemachine.ts"
+      ],
       "../src/tests.spec.ts": [
         "../node_modules/ava/index.d.ts",
         "../src/deterministicfinitestatemachine.ts",
@@ -816,6 +820,10 @@
       "../src/index.ts": [
         "../src/lib/async.ts",
         "../src/lib/number.ts"
+      ],
+      "../src/nfatodfaconverter.ts": [
+        "../src/deterministicfinitestatemachine.ts",
+        "../src/nondeterministicfinitestatemachine.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
