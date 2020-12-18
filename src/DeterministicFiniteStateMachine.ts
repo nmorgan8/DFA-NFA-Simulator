@@ -39,15 +39,4 @@ export default class DeterministicFiniteStateMachine {
 
     return acceptStates.includes(state);
   }
-
-  // accepts(s: string, state = this.description.start) {
-  //   const {
-  //     description: { acceptStates },
-  //   } = this;
-  //   const nextState = this.transition(state, s.charAt(0));
-
-  //   return s.length === 0
-  //     ? acceptStates.includes(state)
-  //     : this.accepts(s.substr(1), nextState);
-  // }
 }
