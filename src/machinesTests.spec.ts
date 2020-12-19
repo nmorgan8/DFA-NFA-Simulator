@@ -112,6 +112,43 @@ const NFAmachinesTests: {
       acceptStates: ['D'],
     },
   },
+  div2: {
+    accepted: ['0', '00', '10', '1110', '10110010'],
+    rejected: ['', '11', '00001', '1011111', '100001'],
+    description: {
+      transitions: {
+        A: {
+          0: ['A', 'B'],
+          1: ['A'],
+        },
+        B: {},
+      },
+      start: 'A',
+      acceptStates: ['B'],
+    },
+  },
+  div3: {
+    accepted: ['', '0', '11', '0000', '1100000'],
+    rejected: ['1010', '10', '10000', '1011111'],
+    description: {
+      transitions: {
+        S: {
+          0: ['S'],
+          1: ['A'],
+        },
+        A: {
+          0: ['B'],
+          1: ['S'],
+        },
+        B: {
+          0: ['A'],
+          1: ['B'],
+        },
+      },
+      start: 'S',
+      acceptStates: ['S'],
+    },
+  },
 };
 
 const DFAmachinesTests: {
@@ -143,26 +180,26 @@ const DFAmachinesTests: {
       acceptStates: ['A'],
     },
   },
-  div3: {
-    accepted: ['', '0', '11', '000000', '1100000', '101111111101'],
+  NFAdiv3: {
+    accepted: ['', '0', '11', '000000', '1100000', '10111101'],
     rejected: ['10', '1010', '100000', '1011111'],
     description: {
       transitions: {
-        r0: {
-          0: 'r0',
-          1: 'r1',
+        S: {
+          0: 'S',
+          1: 'A',
         },
-        r1: {
-          0: 'r2',
-          1: 'r0',
+        A: {
+          0: 'B',
+          1: 'S',
         },
-        r2: {
-          0: 'r1',
-          1: 'r2',
+        B: {
+          0: 'A',
+          1: 'B',
         },
       },
-      start: 'r0',
-      acceptStates: ['r0'],
+      start: 'S',
+      acceptStates: ['S'],
     },
   },
   starts01: {

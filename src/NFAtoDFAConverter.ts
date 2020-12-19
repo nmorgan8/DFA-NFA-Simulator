@@ -38,10 +38,11 @@ export function NFAtoDFAConverter(
   const result = new DeterministicFiniteStateMachine(dfa);
 
   // stack to track which states we still need to convert
-  let frontier = [[nfaDesc.start]];
+  const frontier = [[nfaDesc.start]];
 
   while (frontier.length > 0) {
     let currStates = frontier.pop();
+    currStates = [...currStates];
   }
 
   return result;

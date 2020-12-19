@@ -137,7 +137,7 @@
         "affectsGlobalScope": true
       },
       "../src/deterministicfinitestatemachine.ts": {
-        "version": "1d1cd2ddac3018e68d6da2d212edc256dd5d50fdb3ad633e60424d259e3a271b",
+        "version": "2c48693ef8e4571c246732aaca02375c61ec91628a4c9524fd80f654991637ce",
         "signature": "9e95305b038d4bc6178f6e9a8474b402bde10fe547bcc4fa59e1d1ae523d7a00",
         "affectsGlobalScope": false
       },
@@ -147,7 +147,7 @@
         "affectsGlobalScope": false
       },
       "../src/nfatodfaconverter.ts": {
-        "version": "185b247d08a7d9cbaa0c0bb1cd4d190c8f7fda6da71e0c6c055e79077c6c6e6f",
+        "version": "854186bbbd0faf91bd0c4bd9548de0876cf49d176ac8fc1a396dfa2a18ac9474",
         "signature": "c9bd626846bb63258a07060dc38b02ecdb06eaec2ac1406bf608ac6c2723b9d1",
         "affectsGlobalScope": false
       },
@@ -171,8 +171,8 @@
         "signature": "0ceec7923fb2a6e540f73682c7acffe9124c9c3517a02eac27632844b8a61251",
         "affectsGlobalScope": false
       },
-      "../src/tests.spec.ts": {
-        "version": "ddab8abecf7ab53e2b88d0b1963c8a47cbc111d046a6e4552984dcff4ef1b420",
+      "../src/machinestests.spec.ts": {
+        "version": "9ab53fd32b5821a73f5d703b68329a457dc0ad508307e2a3230fcca77eacfcfe",
         "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
@@ -639,12 +639,12 @@
         "../node_modules/ava/index.d.ts",
         "../src/lib/number.ts"
       ],
-      "../src/nfatodfaconverter.ts": [
+      "../src/machinestests.spec.ts": [
+        "../node_modules/ava/index.d.ts",
         "../src/deterministicfinitestatemachine.ts",
         "../src/nondeterministicfinitestatemachine.ts"
       ],
-      "../src/tests.spec.ts": [
-        "../node_modules/ava/index.d.ts",
+      "../src/nfatodfaconverter.ts": [
         "../src/deterministicfinitestatemachine.ts",
         "../src/nondeterministicfinitestatemachine.ts"
       ]
@@ -908,9 +908,9 @@
       "../src/lib/async.ts",
       "../src/lib/number.spec.ts",
       "../src/lib/number.ts",
+      "../src/machinestests.spec.ts",
       "../src/nfatodfaconverter.ts",
       "../src/nondeterministicfinitestatemachine.ts",
-      "../src/tests.spec.ts",
       "../src/types/example.d.ts"
     ]
   },
