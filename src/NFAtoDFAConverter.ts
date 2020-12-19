@@ -1,7 +1,9 @@
-// type State = string;
-// type InputSymbol = string;
+type State = string;
+type InputSymbol = string;
 
-import DeterministicFiniteStateMachine from './DeterministicFiniteStateMachine';
+import DeterministicFiniteStateMachine, {
+  DFADescription,
+} from './DeterministicFiniteStateMachine';
 import NonDeterministicFiniteStateMachine from './NonDeterministicFiniteStateMachine';
 
 export function NFAtoDFAConverter(
@@ -25,7 +27,7 @@ export function NFAtoDFAConverter(
   }
 
   // init new dfa
-  const dfa = {
+  const dfa: DFADescription = {
     transitions: {},
     start: null,
     acceptStates: [],
@@ -35,6 +37,8 @@ export function NFAtoDFAConverter(
   // init dead state with transitions to self
   const dead = 'dead';
   nfaDesc.transitions[dead] = { 0: [dead], 1: [dead] };
+  dfa.transitions[dead] = { 0: dead, 1: dead };
+
   const result = new DeterministicFiniteStateMachine(dfa);
 
   // stack to track which states we still need to convert
@@ -43,7 +47,23 @@ export function NFAtoDFAConverter(
   while (frontier.length > 0) {
     let currStates = frontier.pop();
     currStates = [...currStates];
+
+    for (const state of currStates) {
+      // accounting for lambda
+      if (nfaDesc.transitions[state]['l']) {
+        currStates = [...currStates, nfaDesc.transitions[state]['l']];
+        combineStates('l', nfaDesc.transitions[state]['l'], currStates);
+      }
+    }
   }
 
   return result;
+}
+
+function combineStates(
+  symbol: InputSymbol,
+  newStates: State[],
+  states: State[]
+): State[] {
+  return [...states, ...newStates];
 }
